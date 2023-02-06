@@ -19,4 +19,21 @@ const thoughtController = {
           res.status(500).json(err);
         });
     },
+
+    // defining a method called getSingleThought.
+    getSingleThought(req, res) {
+        // requesting for a document from the Thought.js
+        Thought.findOne({ _id: req.params.thoughtId })
+          .then((dbThoughtData) => {
+            if (!dbThoughtData) {
+              return res.status(404).json({ message: 'There was no thought with this id!' });
+            }
+            res.json(dbThoughtData);
+          })
+          // returning an error if occurs.
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+          });
+      },
 }
