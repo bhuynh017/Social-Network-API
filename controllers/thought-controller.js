@@ -79,4 +79,31 @@ const thoughtController = {
             res.status(500).json(err);
           });
       },
+
+      // deleting a thought
+      deleteThought(req, res) {
+        Thought.findOneAndRemove({ _id: req.params.thoughtId })
+          .then((dbThoughtData) => {
+            if (!dbThoughtData) {
+              return res.status(404).json({ message: 'There was no thought with this id!' });
+            }
+    
+            // remove thought id from user's `thoughts` field
+            return User.findOneAndUpdate(
+              { thoughts: req.params.thoughtId },
+              { $pull: { thoughts: req.params.thoughtId } },
+              { new: true }
+            );
+          })
+          .then((dbUserData) => {
+            if (!dbUserData) {
+              return res.status(404).json({ message: 'The thought was created but there is no user with the id' });
+            }
+            res.json({ message: 'Thought was successfully deleted!' });
+          })
+          .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+          });
+      },
 }
