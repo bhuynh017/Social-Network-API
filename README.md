@@ -17,6 +17,13 @@
 
 ## Walkthrough Video
 
+* https://drive.google.com/file/d/1vAUZDmDKM_S83itZujfuIXhb3PC9TE-R/view
+
 ## Github Link
 
 * https://github.com/bhuynh017/Social-Network-API 
+
+## Screenshots
+![](images/Screen%20Shot%202023-02-07%20at%2012.13.14%20PM.png)
+![](images/Screen%20Shot%202023-02-07%20at%2012.13.36%20PM.png)
+![](images/Screen%20Shot%202023-02-07%20at%2012.15.34%20PM.png)
